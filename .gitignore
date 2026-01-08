@@ -1,0 +1,12 @@
+# Ignore data files
+data/raw/
+data/processed/
+
+# Ignore virtual environment
+venv/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+# PyCharm
+.idea/
