@@ -10,6 +10,4 @@ __pycache__/
 *.pyc
 # PyCharm
 .idea/
-# Model artifacts
-models/*.npy
-models/*.pkl
+
