@@ -10,7 +10,7 @@ based on detection performance, robustness, and interpretability.
 
 ---
 
-## 📌 Project Highlights
+## Project Highlights
 
 - End-to-end ML pipeline (EDA → preprocessing → modeling → comparison)
 - Unsupervised anomaly detection (no fraud labels used during training)
@@ -19,35 +19,7 @@ based on detection performance, robustness, and interpretability.
 - API-ready design for real-time inference
 - Planned deployment using **Hugging Face Spaces**
 
----
-
-## 📂 Repository Structure
-Fraud_Anomaly_Detection/
-│
-├── notebooks/
-│ ├── 01_data_loading_and_enrichment.ipynb
-│ ├── 02_eda.ipynb
-│ ├── 03_preprocessing.ipynb
-│ ├── 04_isolation_forest.ipynb
-│ ├── 05_one_class_svm.ipynb
-│ ├── 06_autoencoder.ipynb
-│ └── 07_model_comparison.ipynb
-│
-├── src/
-│ ├── init.py
-│ └── config.py
-│
-├── models/ # model artifacts generated locally (gitignored)
-├── data/ # raw & processed data (gitignored)
-├── api/ # FastAPI-based inference service
-│
-├── .gitignore
-└── README.md
-
-
----
-
-## 🧠 Models Implemented
+## Models Implemented
 
 The following unsupervised anomaly detection models are implemented and evaluated:
 
@@ -64,7 +36,7 @@ The **Autoencoder** is selected as the final model due to:
 
 ---
 
-## 📊 Final Model Performance (Autoencoder)
+## Final Model Performance (Autoencoder)
 
 Threshold selected using sensitivity analysis: **99.3 percentile**
 
@@ -80,7 +52,7 @@ transactions and maintaining a manageable false-positive rate.
 
 ---
 
-## 🔍 Interpretability
+## Interpretability
 
 Interpretability is a key requirement in fraud detection systems.
 
@@ -96,13 +68,13 @@ rather than acting as a black box.
 
 ## ⚙️ Setup Instructions
 
-### 1️⃣ Clone the Repository
+### 1. Clone the Repository
 
 
 git clone https://github.com/<your-username>/Fraud_Anomaly_Detection.git
 cd Fraud_Anomaly_Detection
 
-2️⃣ Create a Virtual Environment
+### 2. Create a Virtual Environment
 python -m venv .venv
 
 
@@ -117,7 +89,7 @@ Linux / macOS
 
 source .venv/bin/activate
 
-3️⃣ Install Dependencies
+### 3. Install Dependencies
 pip install -r requirements.txt
 
 📥 Dataset Instructions
@@ -177,7 +149,7 @@ Example API Response:
   ]
 }
 
-🚀 Deployment
+ ### Deployment
 
 The API is designed to be deployed on Hugging Face Spaces using FastAPI.
 
@@ -206,7 +178,7 @@ TensorFlow autoencoder experiments were conducted separately for comparison
 
 The scikit-learn autoencoder is selected for final deployment
 
-👨‍💻 Author
+### Author
 
 Raj Thumar
 M.Tech Data Science
@@ -215,12 +187,5 @@ Indian Institute of Technology Guwahati
 
 ---
 
-### ✅ What to do now
 
-1. Paste this **directly into `README.md` on GitHub**
-2. Commit and push:
-   
-   git add README.md
-   git commit -m "Add detailed project README with setup and usage guide"
-   git push origin main
 
