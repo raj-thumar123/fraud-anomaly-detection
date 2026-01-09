@@ -1,12 +1,28 @@
-from pydantic import BaseModel
-from typing import List
+from pydantic import BaseModel, Field
+from typing import Dict, List
 
 
-class TransactionInput(BaseModel):
-    features: List[float]
+class TransactionRequest(BaseModel):
+    features: Dict[str, float] = Field(
+        ...,
+        description="Transaction features as a name:value mapping"
+    )
 
 
-class FraudPredictionResponse(BaseModel):
-    fraud_probability: float
-    is_fraud: bool
-    top_contributing_features: List[str]
+class PredictionResponse(BaseModel):
+    anomaly_score: float = Field(
+        ..., description="Reconstruction error from autoencoder"
+    )
+    fraud_probability: float = Field(
+        ..., ge=0.0, le=1.0,
+        description="Normalized fraud probability"
+    )
+    is_fraud: bool = Field(
+        ..., description="Fraud decision based on threshold"
+    )
+    risk_level: str = Field(
+        ..., description="LOW | MEDIUM | HIGH | EXTREME"
+    )
+    reasons: List[str] = Field(
+        ..., description="Human-readable reasons for the decision"
+    )
