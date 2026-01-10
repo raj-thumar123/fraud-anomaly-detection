@@ -15,3 +15,8 @@ FEATURES = [
     "distance_from_home",
     "hour","day_of_week","month"
 ]
+
+ANOMALY_THRESHOLD = 1.25
+MODEL_PATH = "models/autoencoder.pkl"
+SCALER_PATH = "models/scaler.pkl"
+

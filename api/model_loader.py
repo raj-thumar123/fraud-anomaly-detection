@@ -1,44 +1,56 @@
+import os
 import joblib
 import numpy as np
-import os
-from typing import List
+from dataclasses import dataclass
 
-# Absolute paths work both locally and on Hugging Face
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_DIR = os.path.join(BASE_DIR, "models")
+from src.config import (
+    FEATURES,
+    MODEL_PATH,
+    SCALER_PATH,
+    ANOMALY_THRESHOLD
+)
 
+# ----------------------------------------------------
+# BASE DIRECTORY
+# ----------------------------------------------------
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
+# ----------------------------------------------------
+# MODEL REGISTRY
+# ----------------------------------------------------
+@dataclass
 class ModelRegistry:
-    scaler = None
-    autoencoder = None
-    threshold = None
-    feature_names: List[str] = []
+    scaler: object
+    autoencoder: object
+    feature_names: list
+    threshold: float
 
 
-def load_models():
+# ----------------------------------------------------
+# LOAD MODELS (ONCE AT STARTUP)
+# ----------------------------------------------------
+def load_models() -> ModelRegistry:
     """
-    Load all ML artifacts once at startup.
-    This function MUST be called only once.
+    Loads all model artifacts and configuration values.
+    Acts as a single source of truth for the API.
     """
 
-    if ModelRegistry.scaler is None:
-        ModelRegistry.scaler = joblib.load(
-            os.path.join(MODEL_DIR, "scaler.pkl")
-        )
-
-    if ModelRegistry.autoencoder is None:
-        ModelRegistry.autoencoder = joblib.load(
-            os.path.join(MODEL_DIR, "autoencoder.pkl")
-        )
-
-    # Source of truth for feature order
-    ModelRegistry.feature_names = list(
-        ModelRegistry.scaler.feature_names_in_
+    # Load scaler
+    scaler = joblib.load(
+        os.path.join(BASE_DIR, SCALER_PATH)
     )
 
-    # ---- FRAUD THRESHOLD ----
-    # Derived offline from validation set (99.3 percentile)
-    # DO NOT recompute at runtime
-    ModelRegistry.threshold = 1.25  # <-- stable, conservative value
+    # Load autoencoder
+    autoencoder = joblib.load(
+        os.path.join(BASE_DIR, MODEL_PATH)
+    )
 
-    return ModelRegistry
+    # Register everything
+    registry = ModelRegistry(
+        scaler=scaler,
+        autoencoder=autoencoder,
+        feature_names=FEATURES,
+        threshold=ANOMALY_THRESHOLD
+    )
+
+    return registry
