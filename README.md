@@ -7,11 +7,11 @@ The project includes feature enrichment, model comparison, FastAPI deployment, u
 
 ---
 
-## 📌 Dataset Information
+## Dataset Information
 
 ### Dataset Used
 **Credit Card Fraud Detection Dataset (Kaggle)**  
-🔗 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+ https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 - Transactions made by European cardholders  
 - Extremely imbalanced dataset (~0.17% fraud)  
@@ -20,7 +20,7 @@ The project includes feature enrichment, model comparison, FastAPI deployment, u
 
 ---
 
-## 📥 Dataset Setup (IMPORTANT)
+## Dataset Setup (IMPORTANT)
 
 1. Download the dataset from Kaggle:  
    https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
@@ -35,13 +35,13 @@ The project includes feature enrichment, model comparison, FastAPI deployment, u
 data/creditcard.csv
 ```
 
-> ⚠️ The notebooks assume this exact file location.
+> The notebooks assume this exact file location.
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
-### 1️⃣ Create and activate virtual environment
+### 1️Create and activate virtual environment
 
 **Windows**
 ```bash
@@ -57,7 +57,7 @@ source venv/bin/activate
 
 ---
 
-### 2️⃣ Install dependencies
+### 2️Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -65,7 +65,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🧠 Feature Engineering & Enrichment
+## Feature Engineering & Enrichment
 
 - Original PCA features (`V1`–`V28`) are retained
 - Additional **synthetic but realistic features** are added:
@@ -77,7 +77,7 @@ This makes the dataset **non-standard** and closer to real production data.
 
 ---
 
-## 🤖 Models Implemented
+## Models Implemented
 
 The following anomaly detection models were evaluated:
 
@@ -93,7 +93,7 @@ The autoencoder was selected due to:
 
 ---
 
-## 🚀 Running the API
+## Running the API
 
 Start the FastAPI server:
 
@@ -109,7 +109,7 @@ http://127.0.0.1:8000
 
 ---
 
-## 🔍 API Usage
+## API Usage
 
 ### Health Check
 ```http
@@ -170,7 +170,7 @@ POST /predict
 
 ---
 
-## 🧪 Running Unit Tests
+## Running Unit Tests
 
 Unit tests validate API behavior, input validation, and error handling.
 
@@ -185,7 +185,7 @@ Expected output:
 
 ---
 
-## 🧠 Configuration Management
+## Configuration Management
 
 All configurable values are centralized in:
 
@@ -202,7 +202,7 @@ System behavior can be modified **without changing API logic**.
 
 ---
 
-## 📊 Documentation & Process
+## Documentation & Process
 
 - **Decision Log:** documents design choices and rejected approaches  
 - **Jupyter Notebooks:** show EDA, feature engineering, and model iterations  
@@ -210,7 +210,7 @@ System behavior can be modified **without changing API logic**.
 
 ---
 
-## ⚠️ Constraints & Design Decisions
+## Constraints & Design Decisions
 
 - Target inference latency: < 100ms  
 - False positives are treated as more costly than false negatives  
@@ -219,7 +219,7 @@ System behavior can be modified **without changing API logic**.
 
 ---
 
-## 👤 Author
+## Author
 
 Raj Thumar  
 M.Tech – Data Science  
